@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:pixel_pen/HomePage.dart';
+import 'package:pixel_pen/WelcomePage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key});
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   void navigateToNextScreen() {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => HomePage()),
+      MaterialPageRoute(builder: (context) => WelcomePage()),
     );
   }
 
