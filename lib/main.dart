@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pixel_pen/HomePage.dart';
+import 'package:pixel_pen/SplashPage.dart';
+import 'package:pixel_pen/WelcomePage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding
@@ -16,8 +18,8 @@ class MyApp extends StatelessWidget {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Pixel Pen',
-      // home: SplashScreen(),
-      home: HomePage(),
+      home: SplashScreen(),
+      // home: HomePage(),
     );
   }
 }
