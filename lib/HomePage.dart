@@ -50,10 +50,11 @@ class _HomePageState extends State<HomePage> {
         leading: Padding(
           padding: const EdgeInsets.only(left: 10),
           child: Container(
-            // height: 40, // Set the desired height
-            // width: 40, // Set the desired width
+            margin: const EdgeInsets.symmetric(vertical: 15),
+            alignment: Alignment.center,
             decoration: BoxDecoration(
-              shape: BoxShape.circle, // Use a circular shape for the button
+              borderRadius: BorderRadius.circular(8),
+              shape: BoxShape.rectangle, // Use a circular shape for the button
               color: AppColors.backgroundColor,
               boxShadow: [
                 BoxShadow(
