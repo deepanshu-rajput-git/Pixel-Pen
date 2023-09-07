@@ -13,8 +13,8 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
-  int start = 200;
-  int delay = 200;
+  int start = 50;
+  int delay = 100;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +89,7 @@ class _WelcomePageState extends State<WelcomePage> {
             //   ),
             // ),
 
-            FadeInDown(
+            FadeIn(
               child: Visibility(
                 child: Container(
                   padding: const EdgeInsets.symmetric(
@@ -154,33 +154,36 @@ class _WelcomePageState extends State<WelcomePage> {
                     delay: Duration(milliseconds: start),
                     child: const FeatureBox(
                       color: Color.fromRGBO(165, 231, 244, 1),
-                      headerText: 'H1',
-                      descriptionText: 'A smarter way to stay organized',
-                    ),
-                  ),
-                  SlideInRight(
-                    delay: Duration(milliseconds: start + delay),
-                    child: const FeatureBox(
-                      color: Color.fromRGBO(157, 202, 235, 1),
-                      headerText: 'H2',
-                      descriptionText: 'Get inspired and stay creative',
+                      headerText: 'Preserve Text Formatting',
+                      descriptionText:
+                          'PixelPen maintains the original text formatting, ensuring your Word file looks just like the PDF.',
                     ),
                   ),
                   SlideInLeft(
                     delay: Duration(milliseconds: start + 2 * delay),
                     child: const FeatureBox(
-                      color: Color.fromRGBO(102, 214, 237, 1),
-                      headerText: 'H3',
+                      color: Color.fromRGBO(157, 202, 235, 1),
+                      headerText: 'Effortless PDF-to-Word Conversion',
                       descriptionText:
-                          'A smarter way to stay organized and informed',
+                          'PixelPen intuitively detects the language of your PDF, ensuring accurate text conversion.',
                     ),
                   ),
-                  SlideInRight(
+                  SlideInLeft(
                     delay: Duration(milliseconds: start + 3 * delay),
                     child: const FeatureBox(
+                      color: Color.fromRGBO(102, 214, 237, 1),
+                      headerText: 'Privacy and Security',
+                      descriptionText:
+                          'Your PDFs are handled with care. PixelPen deletes them from the server after processing.',
+                    ),
+                  ),
+                  SlideInLeft(
+                    delay: Duration(milliseconds: start + 4 * delay),
+                    child: const FeatureBox(
                       color: Color.fromRGBO(162, 238, 239, 1),
-                      headerText: 'H4',
-                      descriptionText: 'Get the best',
+                      headerText: 'Efficient Batch Processing',
+                      descriptionText:
+                          'Batch process multiple files at once, saving you time and effort.Easily view and download the processed Word files to your local device for convenience.',
                     ),
                   ),
                 ],
@@ -188,7 +191,7 @@ class _WelcomePageState extends State<WelcomePage> {
             ),
             MainButton(
               child: const Text(
-                "Pick Me",
+                "Let's Explore..",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
