@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                           selectedFileName != null
                               ? 'Selected PDF : $selectedFileName'
                               : "No File Choosen",
-                          style: TextStyle(fontSize: 16),
+                          style: const TextStyle(fontSize: 16),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                         ),
@@ -127,17 +127,33 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              MainButton(
-                child: const Text(
-                  "Pick Me",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: AppColors.titleColor),
-                ),
-                onPressed: () {
-                  pickPDFFile();
-                },
+              Row(
+                children: [
+                  MainButton(
+                    child: const Text(
+                      "Pick Me",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: AppColors.titleColor),
+                    ),
+                    onPressed: () {
+                      pickPDFFile();
+                    },
+                  ),
+                  MainButton(
+                    child: const Text(
+                      "Upload",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: AppColors.titleColor),
+                    ),
+                    onPressed: () {
+                      pickPDFFile();
+                    },
+                  ),
+                ],
               ),
             ],
           ),
