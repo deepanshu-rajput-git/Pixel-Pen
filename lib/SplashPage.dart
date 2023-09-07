@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:pixel_pen/HomePage.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pixel_pen/WelcomePage.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -20,19 +20,19 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
 
     controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 2))
+        AnimationController(vsync: this, duration: const Duration(seconds: 3))
           ..forward();
 
     animation = CurvedAnimation(parent: controller, curve: Curves.linear);
     Timer(
-      const Duration(seconds: 3),
+      const Duration(seconds: 5),
       navigateToNextScreen,
     );
   }
 
   void navigateToNextScreen() {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => WelcomePage()),
+      MaterialPageRoute(builder: (context) => const WelcomePage()),
     );
   }
 
@@ -53,17 +53,15 @@ class _SplashScreenState extends State<SplashScreen>
             scale: animation,
             child: Center(
               child: Image.asset(
-                "assets/images/logo1.png", //logo here
+                "assets/PixelPenLogo.png",
                 width: 200,
               ),
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           Center(
-            child: Image.asset(
-              "assets/images/tag_line.png", // tag line here
-              width: 300,
-            ),
+            child: Lottie.asset('assets/SplashScanner.json',
+                width: 350, height: 300),
           ),
         ],
       ),
