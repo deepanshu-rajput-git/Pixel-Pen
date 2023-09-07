@@ -1,7 +1,5 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:pixel_pen/HomePage.dart';
 import 'package:pixel_pen/utils/colors.dart';
 import 'package:pixel_pen/widgets/FeatureBox.dart';
@@ -123,7 +121,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       style: TextStyle(
                         fontFamily: 'Cera Pro',
                         color: AppColors.titleColor,
-                        fontSize: 25,
+                        fontSize: 20,
                       ),
                     ),
                   ),
