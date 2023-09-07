@@ -95,7 +95,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
                     vertical: 10,
-                  ),
+                  ), //
                   margin: const EdgeInsets.symmetric(horizontal: 40).copyWith(
                     top: 30,
                   ),
