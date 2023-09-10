@@ -206,7 +206,7 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           selectedFileName != null
                               ? 'Selected Image :   $selectedFileName'
-                              : "No File Choosen",
+                              : "Please pick any image",
                           style: const TextStyle(fontSize: 16),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
@@ -221,7 +221,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   MainButton(
                     child: const Text(
-                      "Pick Me",
+                      "Browse Me",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
