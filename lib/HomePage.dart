@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:pixel_pen/utils/colors.dart';
@@ -282,7 +283,22 @@ class _HomePageState extends State<HomePage> {
                           color: AppColors.titleColor),
                     ),
                     onPressed: () {
-                      //TO DO Download file to local device
+                      try {
+                        // final pictureFile = await cameraController!.takePicture();
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(outputText!.trim() != ""
+                              ? 'Text copied to clipboard: $outputText!'
+                              : "Please upload Image and process it"),
+                        ));
+                        // print(outputText);
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content:
+                                Text('Please upload the Image and process it'),
+                          ),
+                        );
+                      }
                     },
                   ),
                 ],
