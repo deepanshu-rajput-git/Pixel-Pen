@@ -182,14 +182,17 @@ class _HomePageState extends State<HomePage> {
                   ),
                   MainButton(
                     child: const Text(
-                      "Upload",
+                      "Camera",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
                           color: AppColors.titleColor),
                     ),
                     onPressed: () {
-                      //TO DO Upload file
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TextScanner()));
                     },
                   ),
                 ],
