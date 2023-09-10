@@ -293,22 +293,57 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                   MainButton(
-                    child: const Text(
-                      "Copy Text",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: AppColors.titleColor),
+                    child: const Row(
+                      children: [
+                        Text(
+                          "Copy ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: AppColors.titleColor),
+                        ),
+                        Icon(
+                          Icons.copy,
+                          color: AppColors.titleColor,
+                          size: 18, // Adjust the icon color as needed
+                        ),
+                      ],
                     ),
                     onPressed: () {
                       try {
-                        // final pictureFile = await cameraController!.takePicture();
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text(outputText!.trim() != ""
-                              ? 'Text copied to clipboard: $outputText!'
-                              : "Please upload Image and process it"),
-                        ));
-                        // print(outputText);
+                        if (outputText!.trim() != "") {
+                          FlutterClipboard.copy(outputText!).then((value) {
+                            // Show a message or perform any other actions after copying
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                dismissDirection: DismissDirection.horizontal,
+                                content: const Text(
+                                  'Text Copied to Clipboard ',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors
+                                        .white, // Customize the text color
+                                  ),
+                                ),
+                                backgroundColor: Colors.limeAccent[
+                                    700], // Customize the background color
+                                duration: const Duration(
+                                    seconds:
+                                        5), // Adjust the duration as needed
+                                action: SnackBarAction(
+                                  label: 'OK',
+                                  onPressed: () {
+                                    ScaffoldMessenger.of(context)
+                                        .hideCurrentSnackBar();
+                                  },
+                                  textColor: Colors
+                                      .white, // Customize the action button text color
+                                ),
+                              ),
+                            );
+                          });
+                        }
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(

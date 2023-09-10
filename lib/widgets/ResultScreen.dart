@@ -94,15 +94,37 @@ class ResultScreen extends StatelessWidget {
               if (text.trim() != "") {
                 FlutterClipboard.copy(text).then((value) {
                   // Show a message or perform any other actions after copying
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Text copied to clipboard: $text'),
-                  ));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      dismissDirection: DismissDirection.horizontal,
+                      content: const Text(
+                        'Text Copied to Clipboard ',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white, // Customize the text color
+                        ),
+                      ),
+                      backgroundColor: Colors
+                          .limeAccent[700], // Customize the background color
+                      duration: const Duration(
+                          seconds: 5), // Adjust the duration as needed
+                      action: SnackBarAction(
+                        label: 'OK',
+                        onPressed: () {
+                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                        },
+                        textColor: Colors
+                            .white, // Customize the action button text color
+                      ),
+                    ),
+                  );
                 });
               }
             },
             icon: const Icon(
               Icons.copy,
-              color: Colors.black, // Adjust the icon color as needed
+              color: AppColors.titleColor, // Adjust the icon color as needed
             ),
           ),
         ],
