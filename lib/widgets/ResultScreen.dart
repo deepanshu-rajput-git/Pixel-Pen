@@ -1,6 +1,9 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
-import 'package:pixel_pen/utils/colors.dart';
+
+import '../utils/colors.dart';
+// import 'package:flutter_clipboard/flutter_clipboard.dart'; // Import the clipboard package
 
 class ResultScreen extends StatelessWidget {
   final String text;
@@ -9,6 +12,7 @@ class ResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
         toolbarHeight: 80,
         leading: Padding(
@@ -83,9 +87,28 @@ class ResultScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppColors.backgroundColor,
         elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {
+              // Check if the text is not empty before copying to the clipboard
+              if (text.trim() != "") {
+                FlutterClipboard.copy(text).then((value) {
+                  // Show a message or perform any other actions after copying
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Text copied to clipboard: $text'),
+                  ));
+                });
+              }
+            },
+            icon: const Icon(
+              Icons.copy,
+              color: Colors.black, // Adjust the icon color as needed
+            ),
+          ),
+        ],
       ),
       body: Container(
-        padding: EdgeInsets.all(30.0),
+        padding: const EdgeInsets.all(30.0),
         child: SingleChildScrollView(child: Text(text)),
       ),
     );

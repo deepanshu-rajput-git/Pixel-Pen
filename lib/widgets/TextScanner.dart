@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:pixel_pen/widgets/MainButton.dart';
-import 'package:pixel_pen/widgets/ResultContainer.dart';
+import 'package:pixel_pen/widgets/ResultScreen.dart';
 
 import '../utils/colors.dart';
 
