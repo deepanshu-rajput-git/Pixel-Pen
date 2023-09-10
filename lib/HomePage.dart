@@ -5,6 +5,7 @@ import 'package:pixel_pen/utils/ProgressIndicator.dart';
 import 'package:pixel_pen/utils/colors.dart';
 import 'package:pixel_pen/widgets/MainButton.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:pixel_pen/widgets/TextScanner.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,12 +17,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   FilePickerResult? filePicked; // pdf file picked
   String? selectedFileName;
-  // Function to pick a PDF file
+  // Function to pick a image file
   Future<void> pickPDFFile() async {
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
-        allowedExtensions: ['pdf'],
+        allowedExtensions: ['jpg'],
       );
 
       if (result != null) {
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
         });
       }
     } catch (e) {
-      print("Error picking PDF file: $e");
+      print("Error picking image : $e");
     }
   }
 
