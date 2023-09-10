@@ -65,8 +65,26 @@ class _HomePageState extends State<HomePage> {
       // print(outputText);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('An error occurred when scanning text'),
+        SnackBar(
+          dismissDirection: DismissDirection.horizontal,
+          content: const Text(
+            'An error occurred when scanning text',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.white, // Customize the text color
+            ),
+          ),
+          backgroundColor:
+              AppColors.mainColor, // Customize the background color
+          duration: const Duration(seconds: 5), // Adjust the duration as needed
+          action: SnackBarAction(
+            label: 'OK',
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            },
+            textColor: Colors.white, // Customize the action button text color
+          ),
         ),
       );
     }
@@ -160,7 +178,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -184,7 +202,7 @@ class _HomePageState extends State<HomePage> {
                         ]),
                     child: Center(
                       child: FadeIn(
-                        duration: Duration(seconds: 2),
+                        duration: const Duration(seconds: 2),
                         child: Text(
                           selectedFileName != null
                               ? 'Selected Image :   $selectedFileName'
@@ -225,7 +243,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => TextScanner()));
+                              builder: (context) => const TextScanner()));
                     },
                   ),
                 ],
@@ -251,7 +269,7 @@ class _HomePageState extends State<HomePage> {
                                 spreadRadius: 1),
                           ]), // Adjust the width as needed
                       child: FadeIn(
-                        duration: Duration(seconds: 8),
+                        duration: const Duration(seconds: 8),
                         child: Image.file(
                           File(imagePath!),
                         ),
@@ -276,7 +294,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   MainButton(
                     child: const Text(
-                      "Copy",
+                      "Copy Text",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
@@ -293,9 +311,29 @@ class _HomePageState extends State<HomePage> {
                         // print(outputText);
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content:
-                                Text('Please upload the Image and process it'),
+                          SnackBar(
+                            dismissDirection: DismissDirection.horizontal,
+                            content: const Text(
+                              'Please upload Image and process it',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white, // Customize the text color
+                              ),
+                            ),
+                            backgroundColor: AppColors
+                                .mainColor, // Customize the background color
+                            duration: const Duration(
+                                seconds: 5), // Adjust the duration as needed
+                            action: SnackBarAction(
+                              label: 'OK',
+                              onPressed: () {
+                                ScaffoldMessenger.of(context)
+                                    .hideCurrentSnackBar();
+                              },
+                              textColor: Colors
+                                  .white, // Customize the action button text color
+                            ),
                           ),
                         );
                       }
@@ -325,7 +363,7 @@ class _HomePageState extends State<HomePage> {
                                 spreadRadius: 1),
                           ]), // Adjust the width as needed
                       child: FadeIn(
-                        duration: Duration(seconds: 8),
+                        duration: const Duration(seconds: 8),
                         child: SingleChildScrollView(child: Text(outputText!)),
                       ),
                     )
