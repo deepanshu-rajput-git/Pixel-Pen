@@ -15,10 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Pixel Pen',
-        home: SplashScreen()
-        // home: HomePage(),
-        );
+      debugShowCheckedModeBanner: false,
+      title: 'Pixel Pen',
+      home: SplashScreen(),
+      // home: ResultScrSeen(text: "Hello Deepanshu"),
+      // home: HomePage(),
+    );
   }
 }
