@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   String? selectedFileName;
   String? imagePath;
   final textRecogniser = TextRecognizer();
-  late final outputText;
+  String? outputText;
   // Function to pick a image file
   Future<void> pickPDFFile() async {
     try {
@@ -33,8 +33,8 @@ class _HomePageState extends State<HomePage> {
         PlatformFile file = result.files.first;
         String fileName = file.name;
         String? path = file.path;
-        print("BadBoy---------");
-        print(path);
+        // print("BadBoy---------");
+        // print(path);
         // Update the UI with the selected file name
         setState(() {
           selectedFileName = fileName;
@@ -287,10 +287,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              filePicked != null
+              outputText != null
                   ? Container(
-                      height: 250, // Adjust the height as needed
-                      width: 250,
+                      height: 200, // Adjust the height as needed
+                      width: 300,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 20),
                       decoration: BoxDecoration(
                           color: AppColors.backgroundColor!,
                           borderRadius: BorderRadius.circular(8),
@@ -308,10 +310,9 @@ class _HomePageState extends State<HomePage> {
                           ]), // Adjust the width as needed
                       child: FadeIn(
                         duration: Duration(seconds: 8),
-                        child: Image.file(
-                          File(imagePath!),
-                        ),
-                      ))
+                        child: SingleChildScrollView(child: Text(outputText!)),
+                      ),
+                    )
                   : Container(),
             ],
           ),
