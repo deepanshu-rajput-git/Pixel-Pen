@@ -45,6 +45,7 @@ dependencies:
   google_mlkit_text_recognition: ^0.10.0
   camera: ^0.10.5+4
   permission_handler: ^10.4.5
+  syncfusion_flutter_pdf: ^23.1.36
 
 dev_dependencies:
   flutter_test:
