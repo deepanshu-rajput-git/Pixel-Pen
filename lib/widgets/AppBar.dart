@@ -22,7 +22,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             shape: BoxShape.rectangle, // Use a circular shape for the button
-            color: AppColors.backgroundColor,
+            color: AppColors.backgroundColor!,
             boxShadow: [
               BoxShadow(
                 color: AppColors.darkColor!,
@@ -55,7 +55,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         duration: const Duration(milliseconds: 2000),
         child: Container(
           decoration: BoxDecoration(
-              color: AppColors.backgroundColor!,
+              color: AppColors.mainColor!,
               borderRadius: BorderRadius.circular(8),
               boxShadow: [
                 BoxShadow(

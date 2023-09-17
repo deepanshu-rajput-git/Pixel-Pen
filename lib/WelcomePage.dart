@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:pixel_pen/HomePage.dart';
+import 'package:pixel_pen/HomeScreen.dart';
 import 'package:pixel_pen/utils/colors.dart';
 import 'package:pixel_pen/widgets/FeatureBox.dart';
 import 'package:pixel_pen/widgets/MainButton.dart';
@@ -26,7 +27,7 @@ class _WelcomePageState extends State<WelcomePage> {
           duration: Duration(milliseconds: 2000),
           child: Container(
             decoration: BoxDecoration(
-                color: AppColors.backgroundColor!,
+                color: AppColors.mainColor!,
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: [
                   BoxShadow(
@@ -152,8 +153,8 @@ class _WelcomePageState extends State<WelcomePage> {
                 children: [
                   SlideInLeft(
                     delay: Duration(milliseconds: start),
-                    child: const FeatureBox(
-                      color: Color.fromRGBO(165, 231, 244, 1),
+                    child: FeatureBox(
+                      color: AppColors.mainColor3.withOpacity(1),
                       headerText: 'Preserve Text Formatting',
                       descriptionText:
                           'PixelPen maintains the original text formatting, ensuring your Word file looks just like the PDF.',
@@ -161,8 +162,8 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                   SlideInLeft(
                     delay: Duration(milliseconds: start + 2 * delay),
-                    child: const FeatureBox(
-                      color: Color.fromRGBO(157, 202, 235, 1),
+                    child: FeatureBox(
+                      color: AppColors.mainColor.withOpacity(1),
                       headerText: 'Effortless PDF-to-Word Conversion',
                       descriptionText:
                           'PixelPen intuitively detects the language of your PDF, ensuring accurate text conversion.',
@@ -179,8 +180,8 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                   SlideInLeft(
                     delay: Duration(milliseconds: start + 4 * delay),
-                    child: const FeatureBox(
-                      color: Color.fromRGBO(162, 238, 239, 1),
+                    child: FeatureBox(
+                      color: AppColors.mainColor2.withOpacity(0.9),
                       headerText: 'Efficient Batch Processing',
                       descriptionText:
                           'Batch process multiple files at once, saving you time and effort.Easily view and download the processed Word files to your local device for convenience.',
@@ -200,7 +201,7 @@ class _WelcomePageState extends State<WelcomePage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
                 );
               },
             ),

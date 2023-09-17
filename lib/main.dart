@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pixel_pen/SplashPage.dart';
+import 'package:pixel_pen/utils/colors.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding
@@ -13,9 +14,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Pixel Pen',
+      theme: ThemeData(
+          primaryColor: AppColors.mainColor,
+          secondaryHeaderColor: AppColors.mainColor2,
+          scaffoldBackgroundColor: AppColors.mainColor),
       home: SplashScreen(),
       // home: ResultScrSeen(text: "Hello Deepanshu"),
       // home: PdfScanner(),
