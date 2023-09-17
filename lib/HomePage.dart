@@ -9,6 +9,7 @@ import 'package:pixel_pen/widgets/AppBar.dart';
 import 'package:pixel_pen/widgets/MainButton.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:pixel_pen/widgets/PdfScanner.dart';
+import 'package:pixel_pen/widgets/TextContainer.dart';
 import 'package:pixel_pen/widgets/TextScanner.dart';
 
 class HomePage extends StatefulWidget {
@@ -319,31 +320,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               outputText != null
-                  ? Container(
-                      height: 200, // Adjust the height as needed
-                      width: 300,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 20),
-                      decoration: BoxDecoration(
-                          color: AppColors.backgroundColor!,
-                          borderRadius: BorderRadius.circular(8),
-                          boxShadow: [
-                            BoxShadow(
-                                color: AppColors.darkColor!,
-                                blurRadius: 12,
-                                offset: const Offset(4, 4),
-                                spreadRadius: 1),
-                            const BoxShadow(
-                                color: Colors.white,
-                                blurRadius: 12,
-                                offset: Offset(-4, -4),
-                                spreadRadius: 1),
-                          ]), // Adjust the width as needed
-                      child: FadeIn(
-                        duration: const Duration(seconds: 8),
-                        child: SingleChildScrollView(child: Text(outputText!)),
-                      ),
-                    )
+                  ? TextContainer(extractedText: outputText!)
                   : Container(),
             ],
           ),
