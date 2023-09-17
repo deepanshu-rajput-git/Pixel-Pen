@@ -62,7 +62,7 @@ class _TextScannerState extends State<TextScanner> with WidgetsBindingObserver {
         builder: (context, snapshot) {
           return Stack(
             children: [
-              //Show camera content behind everything
+              //Showing camera content behind everything
               if (isPermissionGranted)
                 FutureBuilder<List<CameraDescription>>(
                     future: availableCameras(),
@@ -177,7 +177,8 @@ class _TextScannerState extends State<TextScanner> with WidgetsBindingObserver {
       final recognizerText = await textRecogniser.processImage(inputImage);
       await navigator.push(
         MaterialPageRoute(
-          builder: (context) => ResultScreen(text: recognizerText.text),
+          builder: (context) =>
+              ResultScreen(text: recognizerText.text, name: 'CapturedText'),
         ),
       );
     } catch (e) {

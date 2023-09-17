@@ -164,8 +164,8 @@ class _ImageScannerState extends State<ImageScanner> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                ResultScreen(text: outputText!),
+                            builder: (context) => ResultScreen(
+                                text: outputText!, name: selectedFileName!),
                           ),
                         );
                       },

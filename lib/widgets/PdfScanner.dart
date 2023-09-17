@@ -161,8 +161,8 @@ class _PdfScannerState extends State<PdfScanner> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                ResultScreen(text: extractedText!),
+                            builder: (context) => ResultScreen(
+                                text: extractedText!, name: selectedFileName!),
                           ),
                         );
                       },

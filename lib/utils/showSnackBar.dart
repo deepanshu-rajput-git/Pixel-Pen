@@ -8,7 +8,7 @@ void showErrorSnackbar(BuildContext context, String errorMessage) {
       dismissDirection: DismissDirection.horizontal,
       content: Text(
         errorMessage,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.bold,
           color: Colors.white,
