@@ -25,7 +25,7 @@ class _ImageScannerState extends State<ImageScanner> {
   final textRecogniser = TextRecognizer();
   String? outputText;
   // Function to pick a image file
-  Future<void> pickPDFFile() async {
+  Future<void> pickImageFile() async {
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
@@ -36,33 +36,22 @@ class _ImageScannerState extends State<ImageScanner> {
         PlatformFile file = result.files.first;
         String fileName = file.name;
         String? path = file.path;
+        File pickedImage = File(path!);
+        final inputImage = InputImage.fromFile(pickedImage);
+        final recognizerText = await textRecogniser.processImage(inputImage);
         // print("BadBoy---------");
         // print(path);
         // Update the UI with the selected file name
+
         setState(() {
           selectedFileName = fileName;
           filePicked = result;
           imagePath = path;
+          outputText = recognizerText.text;
         });
       }
     } catch (e) {
       showErrorSnackbar(context, 'Image not Picked');
-    }
-  }
-
-  //It will take care of scanning text from image
-  Future<void> scanImage() async {
-    try {
-      // final pictureFile = await cameraController!.takePicture();
-      final file = File(imagePath!);
-      final inputImage = InputImage.fromFile(file);
-      final recognizerText = await textRecogniser.processImage(inputImage);
-      setState(() {
-        outputText = recognizerText.text;
-      });
-      // print(outputText);
-    } catch (e) {
-      showErrorSnackbar(context, 'An error occurred when scanning text');
     }
   }
 
@@ -128,9 +117,8 @@ class _ImageScannerState extends State<ImageScanner> {
                           color: AppColors.titleColor),
                     ),
                     onPressed: () {
-                      pickPDFFile();
-                      scanImage();
-                      setState(() {});
+                      pickImageFile();
+                      // scanImage();// need to implement picking and scanning in one  fxn pnly likewise pdf case
                     },
                   ),
                 ],
