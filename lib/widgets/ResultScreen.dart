@@ -5,6 +5,7 @@ import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:lecle_downloads_path_provider/lecle_downloads_path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:pixel_pen/utils/showSnackBar.dart';
 import 'package:pixel_pen/widgets/MainButton.dart';
 import 'package:pixel_pen/widgets/TextContainer.dart';
 import '../utils/colors.dart';
@@ -47,7 +48,7 @@ class _ResultScreenState extends State<ResultScreen> {
   Future<void> _downloadTextAsFile(BuildContext context, text) async {
     final downloadsDirectory = await DownloadsPath.downloadsDirectory();
     final fileName = widget.name;
-    final filePath = '${downloadsDirectory?.path}/$fileName';
+    final filePath = '${downloadsDirectory?.path}/$fileName.txt';
 
     final file = File(filePath);
     await file.writeAsString(text);
@@ -109,11 +110,11 @@ class _ResultScreenState extends State<ResultScreen> {
         await _downloadTextAsFile(context, widget.text);
       } catch (e) {
         // Handle any potential errors here
-        print('Error during download: $e');
+        showErrorSnackbar(context, 'Error during download');
       }
     } else {
       // Handle the case where the user denies storage permission
-      print('Storage permission denied');
+      showErrorSnackbar(context, 'Storage permission denied');
     }
   }
 
