@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:pixel_pen/utils/colors.dart';
 import 'package:pixel_pen/widgets/AppBar.dart';
 import 'package:pixel_pen/widgets/MainButton.dart';
+import 'package:pixel_pen/widgets/ResultScreen.dart';
 import 'package:pixel_pen/widgets/TextContainer.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'dart:io';
+
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PdfScanner extends StatefulWidget {
   const PdfScanner({Key? key}) : super(key: key);
@@ -19,7 +22,7 @@ class _PdfScannerState extends State<PdfScanner> {
   FilePickerResult? filePicked; // pdf file picked
   String? extractedText;
   String? selectedFileName;
-  String? imagePath;
+  String? pdfPath;
 
   Future<void> extractTextFromPDF() async {
     try {
@@ -46,12 +49,12 @@ class _PdfScannerState extends State<PdfScanner> {
         // Dispose of the document to free up resources
         document.dispose();
 
-        // Update the state to display the extracted text
+        // Updating the state to display the extracted text
         setState(() {
           extractedText = text;
           selectedFileName = fileName;
           filePicked = result;
-          imagePath = path;
+          pdfPath = path;
         });
       }
     } catch (e) {
@@ -95,6 +98,43 @@ class _PdfScannerState extends State<PdfScanner> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               const SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 300,
+                    height: 100 / 2,
+                    decoration: BoxDecoration(
+                        color: AppColors.backgroundColor!,
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                              color: AppColors.darkColor!,
+                              blurRadius: 12,
+                              offset: const Offset(4, 4),
+                              spreadRadius: 1),
+                          const BoxShadow(
+                              color: Colors.white,
+                              blurRadius: 12,
+                              offset: Offset(-4, -4),
+                              spreadRadius: 1),
+                        ]),
+                    child: Center(
+                      child: FadeIn(
+                        duration: const Duration(seconds: 2),
+                        child: Text(
+                          selectedFileName != null
+                              ? 'Selected PDF :   $selectedFileName'
+                              : "Please pick any PDF",
+                          style: const TextStyle(fontSize: 16),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
               MainButton(
                 child: const Text(
                   "Press Me to Pick for PDF extraction",
@@ -107,8 +147,52 @@ class _PdfScannerState extends State<PdfScanner> {
                   extractTextFromPDF();
                 },
               ),
+              // extractedText != null
+              //     ? TextContainer(extractedText: extractedText!)
+              //     : Container(),
+
+              filePicked != null
+                  ? Container(
+                      height: 250, // Adjust the height as needed
+                      width: 250,
+                      decoration: BoxDecoration(
+                          color: AppColors.backgroundColor!,
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                                color: AppColors.darkColor!,
+                                blurRadius: 12,
+                                offset: const Offset(4, 4),
+                                spreadRadius: 1),
+                            const BoxShadow(
+                                color: Colors.white,
+                                blurRadius: 12,
+                                offset: Offset(-4, -4),
+                                spreadRadius: 1),
+                          ]), // Adjust the width as needed
+                      child: SfPdfViewer.file(File(pdfPath!)),
+                    )
+                  : Container(),
+              // const MyProgressIndicator(progress: 0.1),
               extractedText != null
-                  ? TextContainer(extractedText: extractedText!)
+                  ? MainButton(
+                      child: const Text(
+                        "Process Me",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: AppColors.titleColor),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ResultScreen(text: extractedText!),
+                          ),
+                        );
+                      },
+                    )
                   : Container(),
             ],
           ),

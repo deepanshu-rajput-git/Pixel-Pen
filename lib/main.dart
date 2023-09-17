@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pixel_pen/SplashPage.dart';
+import 'package:pixel_pen/widgets/PdfScanner.dart';
 import 'package:pixel_pen/widgets/ResultScreen.dart';
 
 Future<void> main() async {
@@ -17,9 +18,9 @@ class MyApp extends StatelessWidget {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Pixel Pen',
-      home: SplashScreen(),
+      // home: SplashScreen(),
       // home: ResultScrSeen(text: "Hello Deepanshu"),
-      // home: HomePage(),
+      home: PdfScanner(),
     );
   }
 }
