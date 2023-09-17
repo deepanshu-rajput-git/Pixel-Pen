@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pixel_pen/utils/colors.dart';
 import 'package:pixel_pen/widgets/AppBar.dart';
 import 'package:pixel_pen/widgets/MainButton.dart';
@@ -113,6 +114,9 @@ class _PdfScannerState extends State<PdfScanner> {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 10,
+              ),
               MainButton(
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -194,7 +198,10 @@ class _PdfScannerState extends State<PdfScanner> {
                         );
                       },
                     )
-                  : Container(), // animation
+                  : Center(
+                      child: Lottie.asset('assets/pdfAni.json',
+                          width: 350, height: 400),
+                    ), // animation
             ],
           ),
         )));

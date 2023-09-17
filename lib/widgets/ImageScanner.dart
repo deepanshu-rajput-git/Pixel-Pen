@@ -4,6 +4,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pixel_pen/widgets/AppBar.dart';
 import 'package:pixel_pen/widgets/MainButton.dart';
 import 'package:pixel_pen/widgets/ResultScreen.dart';
@@ -149,7 +150,10 @@ class _ImageScannerState extends State<ImageScanner> {
                           File(imagePath!),
                         ),
                       ))
-                  : Container(),
+                  : Center(
+                      child: Lottie.asset('assets/imageAni.json',
+                          width: 300, height: 450),
+                    ),
               // const MyProgressIndicator(progress: 0.1),
               outputText != null
                   ? MainButton(
