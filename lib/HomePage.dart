@@ -9,6 +9,7 @@ import 'package:pixel_pen/widgets/AppBar.dart';
 import 'package:pixel_pen/widgets/MainButton.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:pixel_pen/widgets/PdfScanner.dart';
+import 'package:pixel_pen/widgets/ResultScreen.dart';
 import 'package:pixel_pen/widgets/TextContainer.dart';
 import 'package:pixel_pen/widgets/TextScanner.dart';
 
@@ -56,7 +57,7 @@ class _HomePageState extends State<HomePage> {
     // if (cameraController == null) {
     //   return;
     // }
-    // final navigator = Navigator.of(context);
+    final navigator = Navigator.of(context);
     try {
       // final pictureFile = await cameraController!.takePicture();
       final file = File(imagePath!);
@@ -65,6 +66,11 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         outputText = recognizerText.text;
       });
+      await navigator.push(
+        MaterialPageRoute(
+          builder: (context) => ResultScreen(text: recognizerText.text),
+        ),
+      );
       // print(outputText);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -319,9 +325,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              outputText != null
-                  ? TextContainer(extractedText: outputText!)
-                  : Container(),
+              // outputText != null
+              //     ? TextContainer(extractedText: outputText!)
+              //     : Container(),
             ],
           ),
         ),
