@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pixel_pen/utils/colors.dart';
 import 'package:pixel_pen/widgets/AppBar.dart';
 import 'package:pixel_pen/widgets/MainButton.dart';
+import 'package:pixel_pen/widgets/TextContainer.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'dart:io';
 
@@ -76,32 +77,7 @@ class _PdfScannerState extends State<PdfScanner> {
                 },
               ),
               extractedText != null
-                  ? Container(
-                      height: 500, // Adjust the height as needed
-                      width: 300,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 20),
-                      decoration: BoxDecoration(
-                          color: AppColors.backgroundColor!,
-                          borderRadius: BorderRadius.circular(8),
-                          boxShadow: [
-                            BoxShadow(
-                                color: AppColors.darkColor!,
-                                blurRadius: 12,
-                                offset: const Offset(4, 4),
-                                spreadRadius: 1),
-                            const BoxShadow(
-                                color: Colors.white,
-                                blurRadius: 12,
-                                offset: Offset(-4, -4),
-                                spreadRadius: 1),
-                          ]), // Adjust the width as needed
-                      child: FadeIn(
-                        duration: const Duration(seconds: 8),
-                        child:
-                            SingleChildScrollView(child: Text(extractedText!)),
-                      ),
-                    )
+                  ? TextContainer(extractedText: extractedText!)
                   : Container(),
               extractedText != null
                   ? Row(
