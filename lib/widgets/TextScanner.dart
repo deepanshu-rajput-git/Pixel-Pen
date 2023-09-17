@@ -1,9 +1,9 @@
 import 'dart:io';
-import 'package:animate_do/animate_do.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:pixel_pen/widgets/AppBar.dart';
 import 'package:pixel_pen/widgets/MainButton.dart';
 import 'package:pixel_pen/widgets/ResultScreen.dart';
 
@@ -77,83 +77,7 @@ class _TextScannerState extends State<TextScanner> with WidgetsBindingObserver {
                       }
                     }),
               Scaffold(
-                appBar: AppBar(
-                  toolbarHeight: 80,
-                  leading: Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 15),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        shape: BoxShape
-                            .rectangle, // Use a circular shape for the button
-                        color: AppColors.backgroundColor,
-                        boxShadow: [
-                          BoxShadow(
-                            color: AppColors.darkColor!,
-                            blurRadius: 12,
-                            offset: const Offset(4, 4),
-                            spreadRadius: 1,
-                          ),
-                          const BoxShadow(
-                            color: Colors.white,
-                            blurRadius: 12,
-                            offset: Offset(-4, -4),
-                            spreadRadius: 1,
-                          ),
-                        ],
-                      ),
-                      child: IconButton(
-                        iconSize: 24, // Set the desired icon size
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: AppColors.darkColor,
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ),
-                  ),
-                  title: BounceInDown(
-                    delay: const Duration(milliseconds: 800),
-                    duration: const Duration(milliseconds: 2000),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: AppColors.backgroundColor!,
-                          borderRadius: BorderRadius.circular(8),
-                          boxShadow: [
-                            BoxShadow(
-                                color: AppColors.darkColor!,
-                                blurRadius: 12,
-                                offset: const Offset(4, 4),
-                                spreadRadius: 1),
-                            const BoxShadow(
-                                color: Colors.white,
-                                blurRadius: 12,
-                                offset: Offset(-4, -4),
-                                spreadRadius: 1),
-                          ]),
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-                        child: Text(
-                          'Pixel Pen',
-                          style: TextStyle(
-                            fontFamily: 'Cera Pro',
-                            color: AppColors.titleColor,
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  centerTitle: true,
-                  backgroundColor: AppColors.backgroundColor,
-                  elevation: 0,
-                ),
+                appBar: MyAppBar(),
                 backgroundColor:
                     isPermissionGranted ? Colors.transparent : null,
                 body: isPermissionGranted

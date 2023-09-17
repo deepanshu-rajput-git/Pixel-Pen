@@ -50,7 +50,7 @@ class _PdfScannerState extends State<PdfScanner> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(title: "Pixel Pen"),
+      appBar: const MyAppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

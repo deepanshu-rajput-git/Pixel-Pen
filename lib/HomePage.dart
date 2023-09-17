@@ -5,6 +5,7 @@ import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:pixel_pen/utils/colors.dart';
+import 'package:pixel_pen/widgets/AppBar.dart';
 import 'package:pixel_pen/widgets/MainButton.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:pixel_pen/widgets/PdfScanner.dart';
@@ -97,81 +98,7 @@ class _HomePageState extends State<HomePage> {
     // by the _incrementCounter method above.
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      appBar: AppBar(
-        toolbarHeight: 80,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 15),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              shape: BoxShape.rectangle, // Use a circular shape for the button
-              color: AppColors.backgroundColor,
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.darkColor!,
-                  blurRadius: 12,
-                  offset: const Offset(4, 4),
-                  spreadRadius: 1,
-                ),
-                const BoxShadow(
-                  color: Colors.white,
-                  blurRadius: 12,
-                  offset: Offset(-4, -4),
-                  spreadRadius: 1,
-                ),
-              ],
-            ),
-            child: IconButton(
-              iconSize: 24, // Set the desired icon size
-              icon: Icon(
-                Icons.arrow_back,
-                color: AppColors.darkColor,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-        ),
-        title: BounceInDown(
-          delay: const Duration(milliseconds: 800),
-          duration: const Duration(milliseconds: 2000),
-          child: Container(
-            decoration: BoxDecoration(
-                color: AppColors.backgroundColor!,
-                borderRadius: BorderRadius.circular(8),
-                boxShadow: [
-                  BoxShadow(
-                      color: AppColors.darkColor!,
-                      blurRadius: 12,
-                      offset: const Offset(4, 4),
-                      spreadRadius: 1),
-                  const BoxShadow(
-                      color: Colors.white,
-                      blurRadius: 12,
-                      offset: Offset(-4, -4),
-                      spreadRadius: 1),
-                ]),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-              child: Text(
-                'Pixel Pen',
-                style: TextStyle(
-                  fontFamily: 'Cera Pro',
-                  color: AppColors.titleColor,
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-        ),
-        centerTitle: true,
-        backgroundColor: AppColors.backgroundColor,
-        elevation: 0,
-      ),
+      appBar: MyAppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -249,48 +176,21 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              GestureDetector(
-                child: Container(
-                  width: 300,
-                  height: 100 / 2,
-                  decoration: BoxDecoration(
-                      color: AppColors.backgroundColor!,
-                      borderRadius: BorderRadius.circular(8),
-                      boxShadow: [
-                        BoxShadow(
-                            color: AppColors.darkColor!,
-                            blurRadius: 12,
-                            offset: const Offset(4, 4),
-                            spreadRadius: 1),
-                        const BoxShadow(
-                            color: Colors.white,
-                            blurRadius: 12,
-                            offset: Offset(-4, -4),
-                            spreadRadius: 1),
-                      ]),
-                  child: Center(
-                    child: FadeIn(
-                      duration: const Duration(seconds: 2),
-                      child: const Text(
-                        "Press Me to pick a PDF",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: AppColors.titleColor),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                    ),
-                  ),
+              MainButton(
+                child: const Text(
+                  "Press Me to Pick for PDF extraction",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: AppColors.titleColor),
                 ),
-                onTap: () {
+                onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const PdfScanner()));
                 },
               ),
-
               filePicked != null
                   ? Container(
                       height: 250, // Adjust the height as needed
