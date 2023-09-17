@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:pixel_pen/HomePage.dart';
 import 'package:pixel_pen/HomeScreen.dart';
 import 'package:pixel_pen/utils/colors.dart';
 import 'package:pixel_pen/widgets/FeatureBox.dart';

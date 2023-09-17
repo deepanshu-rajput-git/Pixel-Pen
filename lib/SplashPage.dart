@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:pixel_pen/HomePage.dart';
 import 'package:pixel_pen/HomeScreen.dart';
 import 'package:pixel_pen/WelcomePage.dart';
 

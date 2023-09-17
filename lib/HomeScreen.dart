@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
 
   final pages = [
     Container(
-      color: AppColors.mainColor,
+      color: AppColors.mainColor2,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -53,15 +53,15 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Center(
-              child: Lottie.asset('assets/SplashScanner.json',
-                  width: 300, height: 250),
+              child:
+                  Lottie.asset('assets/pdfPage.json', width: 350, height: 450),
             ),
           ],
         ),
       ),
     ),
     Container(
-      color: Color.fromARGB(255, 210, 242, 68),
+      color: AppColors.mainColor4,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -88,14 +88,14 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Center(
-            child: Lottie.asset('assets/SplashScanner.json',
-                width: 300, height: 250),
+            child:
+                Lottie.asset('assets/lastPage.json', width: 350, height: 350),
           ),
         ],
       ),
     ),
     Container(
-      color: Color.fromARGB(255, 131, 220, 230),
+      color: AppColors.mainColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -123,8 +123,20 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Center(
-            child: Lottie.asset('assets/SplashScanner.json',
-                width: 300, height: 250),
+            child:
+                Lottie.asset('assets/imagePage.json', width: 300, height: 250),
+          ),
+        ],
+      ),
+    ),
+    Container(
+      color: AppColors.mainColor3,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Center(
+            child:
+                Lottie.asset('assets/developer.json', width: 300, height: 250),
           ),
         ],
       ),
