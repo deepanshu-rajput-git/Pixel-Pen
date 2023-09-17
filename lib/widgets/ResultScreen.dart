@@ -242,17 +242,33 @@ class _ResultScreenState extends State<ResultScreen> {
         body: SingleChildScrollView(
           child: Column(
             children: [
+              const SizedBox(
+                height: 20,
+              ),
               TextContainer(extractedText: widget.text),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   MainButton(
-                    child: Text("Download"),
+                    child: const Text(
+                      "Download",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: AppColors.titleColor),
+                    ),
                     onPressed: () {
                       _startDownload();
                     },
                   ),
                   MainButton(
-                      child: Text("Save to Drive"),
+                      child: const Text(
+                        "Save to Drive",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: AppColors.titleColor),
+                      ),
                       onPressed: () {
                         _saveTextToDrive(context, widget.text);
                       }),

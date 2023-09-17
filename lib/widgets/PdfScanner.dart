@@ -114,12 +114,25 @@ class _PdfScannerState extends State<PdfScanner> {
                 ],
               ),
               MainButton(
-                child: const Text(
-                  "Press Me to Pick for PDF extraction",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: AppColors.titleColor),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "Pick PDF for extraction",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: AppColors.titleColor),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Icon(
+                      Icons.open_in_browser_rounded,
+                      size: 27,
+                    )
+                  ],
                 ),
                 onPressed: () {
                   extractTextFromPDF();
@@ -127,7 +140,7 @@ class _PdfScannerState extends State<PdfScanner> {
               ),
               filePicked != null
                   ? Container(
-                      height: 250, // Adjust the height as needed
+                      height: 350,
                       width: 250,
                       decoration: BoxDecoration(
                           color: AppColors.backgroundColor!,
@@ -144,18 +157,32 @@ class _PdfScannerState extends State<PdfScanner> {
                                 offset: Offset(-4, -4),
                                 spreadRadius: 1),
                           ]), // Adjust the width as needed
-                      child: SfPdfViewer.file(File(pdfPath!)),
+                      child: SfPdfViewer.file(
+                        File(pdfPath!),
+                        maxZoomLevel: 5,
+                        enableDoubleTapZooming: true,
+                      ),
                     )
                   : Container(),
               // const MyProgressIndicator(progress: 0.1),
               extractedText != null
                   ? MainButton(
-                      child: const Text(
-                        "Process Me",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: AppColors.titleColor),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        // mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Process Me",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: AppColors.titleColor),
+                          ),
+                          Icon(
+                            Icons.arrow_right,
+                            size: 30,
+                          )
+                        ],
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -167,7 +194,7 @@ class _PdfScannerState extends State<PdfScanner> {
                         );
                       },
                     )
-                  : Container(),
+                  : Container(), // animation
             ],
           ),
         )));
