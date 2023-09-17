@@ -10,7 +10,6 @@ import 'package:pixel_pen/widgets/MainButton.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:pixel_pen/widgets/PdfScanner.dart';
 import 'package:pixel_pen/widgets/ResultScreen.dart';
-import 'package:pixel_pen/widgets/TextContainer.dart';
 import 'package:pixel_pen/widgets/TextScanner.dart';
 
 class HomePage extends StatefulWidget {
