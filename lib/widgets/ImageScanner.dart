@@ -18,7 +18,7 @@ class ImageScanner extends StatefulWidget {
 }
 
 class _ImageScannerState extends State<ImageScanner> {
-  FilePickerResult? filePicked; // pdf file picked
+  FilePickerResult? filePicked; // image file picked
   String? selectedFileName;
   String? imagePath;
   final textRecogniser = TextRecognizer();
@@ -45,13 +45,34 @@ class _ImageScannerState extends State<ImageScanner> {
         });
       }
     } catch (e) {
-      print("Error picking image : $e");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          dismissDirection: DismissDirection.horizontal,
+          content: const Text(
+            'Image not Picked',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.white, // Customize the text color
+            ),
+          ),
+          backgroundColor:
+              AppColors.mainColor, // Customize the background color
+          duration: const Duration(seconds: 5), // Adjust the duration as needed
+          action: SnackBarAction(
+            label: 'OK',
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            },
+            textColor: Colors.white, // Customize the action button text color
+          ),
+        ),
+      );
     }
   }
 
   //It will take care of scanning text from image
   Future<void> scanImage() async {
-    final navigator = Navigator.of(context);
     try {
       // final pictureFile = await cameraController!.takePicture();
       final file = File(imagePath!);

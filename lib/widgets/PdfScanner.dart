@@ -16,7 +16,10 @@ class PdfScanner extends StatefulWidget {
 }
 
 class _PdfScannerState extends State<PdfScanner> {
+  FilePickerResult? filePicked; // pdf file picked
   String? extractedText;
+  String? selectedFileName;
+  String? imagePath;
 
   Future<void> extractTextFromPDF() async {
     try {
@@ -27,6 +30,9 @@ class _PdfScannerState extends State<PdfScanner> {
       );
 
       if (result != null) {
+        PlatformFile file = result.files.first;
+        String fileName = file.name;
+        String? path = file.path;
         File pdfFile = File(result.files.single.path!);
 
         // Load the selected PDF document
@@ -43,11 +49,36 @@ class _PdfScannerState extends State<PdfScanner> {
         // Update the state to display the extracted text
         setState(() {
           extractedText = text;
+          selectedFileName = fileName;
+          filePicked = result;
+          imagePath = path;
         });
       }
     } catch (e) {
       // Handle any errors that may occur during the process
-      print('Error: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          dismissDirection: DismissDirection.horizontal,
+          content: const Text(
+            'An error occurred when scanning PDF',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.white, // Customize the text color
+            ),
+          ),
+          backgroundColor:
+              AppColors.mainColor, // Customize the background color
+          duration: const Duration(seconds: 5), // Adjust the duration as needed
+          action: SnackBarAction(
+            label: 'OK',
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            },
+            textColor: Colors.white, // Customize the action button text color
+          ),
+        ),
+      );
     }
   }
 
@@ -78,37 +109,6 @@ class _PdfScannerState extends State<PdfScanner> {
               ),
               extractedText != null
                   ? TextContainer(extractedText: extractedText!)
-                  : Container(),
-              extractedText != null
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        MainButton(
-                          child: const Text(
-                            "Save to drive",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: AppColors.titleColor),
-                          ),
-                          onPressed: () {
-                            // To Do Save to drive
-                          },
-                        ),
-                        MainButton(
-                          child: const Text(
-                            "Download",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: AppColors.titleColor),
-                          ),
-                          onPressed: () {
-                            // To do Shared Prefernces
-                          },
-                        ),
-                      ],
-                    )
                   : Container(),
             ],
           ),
