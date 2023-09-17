@@ -5,11 +5,12 @@ import 'package:pixel_pen/utils/colors.dart';
 import 'package:pixel_pen/widgets/AppBar.dart';
 import 'package:pixel_pen/widgets/MainButton.dart';
 import 'package:pixel_pen/widgets/ResultScreen.dart';
-import 'package:pixel_pen/widgets/TextContainer.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'dart:io';
 
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+
+import '../utils/showSnackBar.dart';
 
 class PdfScanner extends StatefulWidget {
   const PdfScanner({Key? key}) : super(key: key);
@@ -58,30 +59,7 @@ class _PdfScannerState extends State<PdfScanner> {
         });
       }
     } catch (e) {
-      // Handle any errors that may occur during the process
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          dismissDirection: DismissDirection.horizontal,
-          content: const Text(
-            'An error occurred when scanning PDF',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.white, // Customize the text color
-            ),
-          ),
-          backgroundColor:
-              AppColors.mainColor, // Customize the background color
-          duration: const Duration(seconds: 5), // Adjust the duration as needed
-          action: SnackBarAction(
-            label: 'OK',
-            onPressed: () {
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            },
-            textColor: Colors.white, // Customize the action button text color
-          ),
-        ),
-      );
+      showErrorSnackbar(context, 'An error occurred when scanning PDF');
     }
   }
 
@@ -147,10 +125,6 @@ class _PdfScannerState extends State<PdfScanner> {
                   extractTextFromPDF();
                 },
               ),
-              // extractedText != null
-              //     ? TextContainer(extractedText: extractedText!)
-              //     : Container(),
-
               filePicked != null
                   ? Container(
                       height: 250, // Adjust the height as needed

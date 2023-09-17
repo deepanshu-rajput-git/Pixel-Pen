@@ -38,12 +38,10 @@ class _HomePageState extends State<HomePage> {
                           color: AppColors.titleColor),
                     ),
                     onPressed: () {
-                      () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ImageScanner()));
-                      };
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ImageScanner()));
                     }),
                 MainButton(
                   child: const Text(

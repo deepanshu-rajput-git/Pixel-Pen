@@ -9,6 +9,7 @@ import 'package:pixel_pen/widgets/MainButton.dart';
 import 'package:pixel_pen/widgets/ResultScreen.dart';
 
 import '../utils/colors.dart';
+import '../utils/showSnackBar.dart';
 
 class ImageScanner extends StatefulWidget {
   const ImageScanner({super.key});
@@ -45,29 +46,7 @@ class _ImageScannerState extends State<ImageScanner> {
         });
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          dismissDirection: DismissDirection.horizontal,
-          content: const Text(
-            'Image not Picked',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.white, // Customize the text color
-            ),
-          ),
-          backgroundColor:
-              AppColors.mainColor, // Customize the background color
-          duration: const Duration(seconds: 5), // Adjust the duration as needed
-          action: SnackBarAction(
-            label: 'OK',
-            onPressed: () {
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            },
-            textColor: Colors.white, // Customize the action button text color
-          ),
-        ),
-      );
+      showErrorSnackbar(context, 'Image not Picked');
     }
   }
 
@@ -83,29 +62,7 @@ class _ImageScannerState extends State<ImageScanner> {
       });
       // print(outputText);
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          dismissDirection: DismissDirection.horizontal,
-          content: const Text(
-            'An error occurred when scanning text',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.white, // Customize the text color
-            ),
-          ),
-          backgroundColor:
-              AppColors.mainColor, // Customize the background color
-          duration: const Duration(seconds: 5), // Adjust the duration as needed
-          action: SnackBarAction(
-            label: 'OK',
-            onPressed: () {
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            },
-            textColor: Colors.white, // Customize the action button text color
-          ),
-        ),
-      );
+      showErrorSnackbar(context, 'An error occurred when scanning text');
     }
   }
 
@@ -173,6 +130,7 @@ class _ImageScannerState extends State<ImageScanner> {
                     onPressed: () {
                       pickPDFFile();
                       scanImage();
+                      setState(() {});
                     },
                   ),
                 ],
