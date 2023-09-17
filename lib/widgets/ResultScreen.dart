@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
+import 'package:pixel_pen/widgets/MainButton.dart';
 import 'package:pixel_pen/widgets/TextContainer.dart';
 
 import '../utils/colors.dart';
@@ -131,6 +132,19 @@ class ResultScreen extends StatelessWidget {
             ),
           ],
         ),
-        body: TextContainer(extractedText: text));
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              TextContainer(extractedText: text),
+              MainButton(child: Text("Copy the text"), onPressed: () {}),
+              Row(
+                children: [
+                  MainButton(child: Text("Download"), onPressed: () {}),
+                  MainButton(child: Text("Save to Drive"), onPressed: () {}),
+                ],
+              )
+            ],
+          ),
+        ));
   }
 }
