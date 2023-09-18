@@ -48,7 +48,7 @@ class _ResultScreenState extends State<ResultScreen> {
   Future<void> _downloadTextAsFile(BuildContext context, text) async {
     final downloadsDirectory = await DownloadsPath.downloadsDirectory();
     final fileName = widget.name;
-    final filePath = '${downloadsDirectory?.path}/$fileName.txt';
+    final filePath = '${downloadsDirectory?.path}/PixelPen$fileName.txt';
 
     final file = File(filePath);
     await file.writeAsString(text);
@@ -56,7 +56,7 @@ class _ResultScreenState extends State<ResultScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'Text Downloaded to Your Device : $filePath',
+          'Text Downloaded to Your Device : PixelPen$fileName.txt',
           style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
