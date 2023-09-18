@@ -120,7 +120,7 @@ class HomeScreen extends StatelessWidget {
               builder: (context) => MainContainer(
                 color: AppColors.mainColor,
                 child: const Text(
-                  "PixelPen: Where Images Speak...",
+                  "Unlock Text from Your Lens :\n PixelPen's Text Extraction Magic...",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
@@ -144,11 +144,23 @@ class HomeScreen extends StatelessWidget {
     Container(
       color: AppColors.mainColor3,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Center(
             child:
                 Lottie.asset('assets/developer.json', width: 350, height: 300),
+          ),
+          const SizedBox(
+            height: 200,
+          ),
+          const Text(
+            'Developed With ❤️ \n      By Deepanshu Rajput',
+            style: TextStyle(
+              fontFamily: 'Cera Pro',
+              color: AppColors.titleColor,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
       ),
