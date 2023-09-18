@@ -80,6 +80,8 @@ flutter:
     - assets/imagePage.json
     - assets/developer.json
     - assets/pdfPage.json
+    - assets/lastPage.json
+    - assets/camPage.json
     # - assets/TagLine.png
     - assets/PixelPenLogo.png
     # - images/a_dot_ham.jpeg

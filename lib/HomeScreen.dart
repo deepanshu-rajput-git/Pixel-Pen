@@ -3,7 +3,7 @@ import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pixel_pen/utils/colors.dart';
 import 'package:pixel_pen/widgets/ImageScanner.dart';
-import 'package:pixel_pen/widgets/MainButton.dart';
+import 'package:pixel_pen/widgets/MainContainer.dart';
 import 'package:pixel_pen/widgets/PdfScanner.dart';
 import 'package:pixel_pen/widgets/TextScanner.dart';
 
@@ -30,17 +30,17 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            const SizedBox(
+              height: 20,
+            ),
+            Center(
+              child:
+                  Lottie.asset('assets/pdfPage.json', width: 350, height: 450),
+            ),
             Container(
               child: Builder(
-                builder: (context) => MainButton(
-                  child: const Text(
-                    "PixelPen intuitively detects the language of your PDF, ensuring accurate text conversion.",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: AppColors.titleColor,
-                    ),
-                  ),
+                builder: (context) => MainContainer(
+                  color: AppColors.mainColor2,
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -49,12 +49,16 @@ class HomeScreen extends StatelessWidget {
                       ),
                     );
                   },
+                  child: const Text(
+                    "Your PDFs, Your Words :\n PixelPen at Your Service...",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: AppColors.titleColor,
+                    ),
+                  ),
                 ),
               ),
-            ),
-            Center(
-              child:
-                  Lottie.asset('assets/pdfPage.json', width: 350, height: 450),
             ),
           ],
         ),
@@ -65,11 +69,19 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          const SizedBox(
+            height: 20,
+          ),
+          Center(
+            child:
+                Lottie.asset('assets/lastPage.json', width: 400, height: 350),
+          ),
           Container(
             child: Builder(
-              builder: (context) => MainButton(
+              builder: (context) => MainContainer(
+                color: AppColors.mainColor4,
                 child: const Text(
-                  "Image Processing",
+                  "Unlock Text from Pixels :\n PixelPen - Your Digital Ink..!",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
@@ -87,10 +99,6 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          Center(
-            child:
-                Lottie.asset('assets/lastPage.json', width: 350, height: 350),
-          ),
         ],
       ),
     ),
@@ -99,12 +107,20 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          const SizedBox(
+            height: 20,
+          ),
+          Center(
+            child:
+                Lottie.asset('assets/imagePage.json', width: 300, height: 250),
+          ),
           Container(
             // color: Color.fromARGB(255, 210, 242, 68),
             child: Builder(
-              builder: (context) => MainButton(
+              builder: (context) => MainContainer(
+                color: AppColors.mainColor,
                 child: const Text(
-                  "Camera Processing",
+                  "PixelPen: Where Images Speak...",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
@@ -122,10 +138,6 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          Center(
-            child:
-                Lottie.asset('assets/imagePage.json', width: 300, height: 250),
-          ),
         ],
       ),
     ),
@@ -136,7 +148,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           Center(
             child:
-                Lottie.asset('assets/developer.json', width: 300, height: 250),
+                Lottie.asset('assets/developer.json', width: 350, height: 300),
           ),
         ],
       ),

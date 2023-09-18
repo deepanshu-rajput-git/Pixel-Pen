@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:pixel_pen/utils/colors.dart';
 
-class MainButton extends StatefulWidget {
+class MainContainer extends StatefulWidget {
   final Widget child;
-  Color? color;
+  final Color? color;
   final VoidCallback onPressed;
-  MainButton(
+  const MainContainer(
       {Key? key, required this.child, required this.onPressed, this.color})
       : super(key: key);
 
@@ -13,7 +13,7 @@ class MainButton extends StatefulWidget {
   _MainButtonState createState() => _MainButtonState();
 }
 
-class _MainButtonState extends State<MainButton> {
+class _MainButtonState extends State<MainContainer> {
   bool _pressing = false;
   @override
   Widget build(BuildContext context) {
@@ -27,12 +27,13 @@ class _MainButtonState extends State<MainButton> {
         padding: const EdgeInsets.all(20),
         margin: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-            color: _pressing ? Colors.grey[350] : AppColors.backgroundColor!,
+            color:
+                _pressing ? Colors.grey[350] : widget.color!.withOpacity(0.6),
             borderRadius: BorderRadius.circular(8),
             boxShadow: _pressing
                 ? [
                     BoxShadow(
-                        color: AppColors.darkColor!,
+                        color: widget.color!,
                         blurRadius: 6,
                         offset: const Offset(2, 2),
                         spreadRadius: 1),
@@ -44,7 +45,7 @@ class _MainButtonState extends State<MainButton> {
                   ]
                 : [
                     BoxShadow(
-                        color: AppColors.darkColor!,
+                        color: widget.color!,
                         blurRadius: 12,
                         offset: const Offset(4, 4),
                         spreadRadius: 1),

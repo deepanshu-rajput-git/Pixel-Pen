@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
+import 'package:lottie/lottie.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:pixel_pen/widgets/AppBar.dart';
 import 'package:pixel_pen/widgets/MainButton.dart';
@@ -98,15 +99,32 @@ class _TextScannerState extends State<TextScanner> with WidgetsBindingObserver {
                           ),
                         ],
                       )
-                    : Center(
-                        child: Container(
-                          padding:
-                              const EdgeInsets.only(left: 24.0, right: 24.0),
-                          child: const Text(
-                            'Camera Permission Denied',
-                            textAlign: TextAlign.center,
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            height: 20,
                           ),
-                        ),
+                          Center(
+                            child: Container(
+                              padding: const EdgeInsets.only(
+                                  left: 24.0, right: 24.0),
+                              child: Center(
+                                child: Lottie.asset('assets/camPage.json',
+                                    width: 350, height: 300),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            child: const Text(
+                              "Camera Permission denied",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: AppColors.titleColor),
+                            ),
+                          )
+                        ],
                       ),
               ),
             ],

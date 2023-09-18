@@ -22,8 +22,8 @@ class _WelcomePageState extends State<WelcomePage> {
       appBar: AppBar(
         toolbarHeight: 80,
         title: BounceInDown(
-          delay: Duration(milliseconds: 800),
-          duration: Duration(milliseconds: 2000),
+          delay: const Duration(milliseconds: 800),
+          duration: const Duration(milliseconds: 2000),
           child: Container(
             decoration: BoxDecoration(
                 color: AppColors.mainColor!,
@@ -61,34 +61,6 @@ class _WelcomePageState extends State<WelcomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // ZoomIn(
-            //   child: Stack(
-            //     children: [
-            //       Center(
-            //         child: Container(
-            //           height: 130,
-            //           width: 150,
-            //           margin: const EdgeInsets.only(top: 4),
-            //           decoration: const BoxDecoration(
-            //             color: Colors.white,
-            //             shape: BoxShape.rectangle,
-            //           ),
-            //         ),
-            //       ),
-            //       Container(
-            //         height: 130,
-            //         decoration: const BoxDecoration(
-            //           image: DecorationImage(
-            //             image: AssetImage(
-            //               'assets/images/logo.png', // logo will be there
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-
             FadeIn(
               child: Visibility(
                 child: Container(
