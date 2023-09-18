@@ -55,9 +55,9 @@ class _ResultScreenState extends State<ResultScreen> {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: const Text(
-          'Text Downloaded to Your Device',
-          style: TextStyle(
+        content: Text(
+          'Text Downloaded to Your Device : $filePath',
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -105,17 +105,17 @@ class _ResultScreenState extends State<ResultScreen> {
   void _startDownload() async {
     // Request storage permission
     final status = await Permission.storage.request();
-    if (status.isGranted) {
-      try {
-        await _downloadTextAsFile(context, widget.text);
-      } catch (e) {
-        // Handle any potential errors here
-        showErrorSnackbar(context, 'Error during download');
-      }
-    } else {
-      // Handle the case where the user denies storage permission
-      showErrorSnackbar(context, 'Storage permission denied');
+    // if (status.isGranted) {
+    try {
+      await _downloadTextAsFile(context, widget.text);
+    } catch (e) {
+      // Handle any potential errors here
+      showErrorSnackbar(context, 'Error during download');
     }
+    // } else {
+    //   // Handle the case where the user denies storage permission
+    //   showErrorSnackbar(context, 'Storage permission denied');
+    // }
   }
 
   @override
