@@ -48,15 +48,16 @@ class _ResultScreenState extends State<ResultScreen> {
   Future<void> _downloadTextAsFile(BuildContext context, text) async {
     final downloadsDirectory = await DownloadsPath.downloadsDirectory();
     final fileName = widget.name;
-    final filePath = '${downloadsDirectory?.path}/PixelPen$fileName.txt';
+    final filePath = '${downloadsDirectory?.path}/PixelPen_$fileName.txt';
 
     final file = File(filePath);
     await file.writeAsString(text);
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        dismissDirection: DismissDirection.horizontal,
         content: Text(
-          'Text Downloaded to Your Device : PixelPen$fileName.txt',
+          'Text Downloaded to Your Device : PixelPen_$fileName.txt',
           style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
@@ -81,6 +82,7 @@ class _ResultScreenState extends State<ResultScreen> {
     // Implement the logic to save the text to Google Drive here
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        dismissDirection: DismissDirection.horizontal,
         content: const Text(
           'Feature not available yet',
           style: TextStyle(
@@ -166,7 +168,7 @@ class _ResultScreenState extends State<ResultScreen> {
             duration: const Duration(milliseconds: 2000),
             child: Container(
               decoration: BoxDecoration(
-                  color: AppColors.backgroundColor!,
+                  color: AppColors.mainColor,
                   borderRadius: BorderRadius.circular(8),
                   boxShadow: [
                     BoxShadow(
@@ -247,27 +249,53 @@ class _ResultScreenState extends State<ResultScreen> {
               ),
               TextContainer(extractedText: widget.text),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   MainButton(
-                    child: const Text(
-                      "Download",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: AppColors.titleColor),
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Download",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: AppColors.titleColor),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Icon(
+                          Icons.file_download_outlined,
+                          size: 25,
+                        )
+                      ],
                     ),
                     onPressed: () {
                       _startDownload();
                     },
                   ),
                   MainButton(
-                      child: const Text(
-                        "Save to Drive",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: AppColors.titleColor),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        // mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "To Drive",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: AppColors.titleColor),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Icon(
+                            Icons.add_to_drive,
+                            size: 25,
+                          )
+                        ],
                       ),
                       onPressed: () {
                         _saveTextToDrive(context, widget.text);

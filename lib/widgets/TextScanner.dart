@@ -94,6 +94,30 @@ class _TextScannerState extends State<TextScanner> with WidgetsBindingObserver {
                                   color: AppColors.titleColor),
                             ),
                             onPressed: () {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  dismissDirection: DismissDirection.horizontal,
+                                  content: const Text(
+                                    'Extracting text from lens..',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors
+                                          .white, // Customize the text color
+                                    ),
+                                  ),
+                                  backgroundColor: AppColors.mainColor2,
+                                  duration: const Duration(seconds: 4),
+                                  action: SnackBarAction(
+                                    label: 'OK',
+                                    onPressed: () {
+                                      ScaffoldMessenger.of(context)
+                                          .hideCurrentSnackBar();
+                                    },
+                                    textColor: Colors.white,
+                                  ),
+                                ),
+                              );
                               scanImage();
                             },
                           ),

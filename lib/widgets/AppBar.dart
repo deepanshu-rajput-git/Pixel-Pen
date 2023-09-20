@@ -55,7 +55,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         duration: const Duration(milliseconds: 2000),
         child: Container(
           decoration: BoxDecoration(
-              color: AppColors.mainColor!,
+              color: AppColors.mainColor,
               borderRadius: BorderRadius.circular(8),
               boxShadow: [
                 BoxShadow(

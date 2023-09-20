@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
             child: Lottie.asset('assets/pdfPage.json', width: 350, height: 450),
           ),
           SizedBox(
-            height: 10,
+            height: 50,
           ),
           Container(
             child: Builder(
@@ -83,8 +83,8 @@ class HomeScreen extends StatelessWidget {
             child:
                 Lottie.asset('assets/lastPage.json', width: 400, height: 350),
           ),
-          SizedBox(
-            height: 20,
+          const SizedBox(
+            height: 60,
           ),
           Container(
             child: Builder(
@@ -136,7 +136,7 @@ class HomeScreen extends StatelessWidget {
                 Lottie.asset('assets/imagePage.json', width: 300, height: 250),
           ),
           SizedBox(
-            height: 110,
+            height: 160,
           ),
           Container(
             // color: Color.fromARGB(255, 210, 242, 68),
@@ -189,7 +189,7 @@ class HomeScreen extends StatelessWidget {
                 Lottie.asset('assets/developer.json', width: 350, height: 300),
           ),
           const SizedBox(
-            height: 202,
+            height: 200,
           ),
           const Text(
             'Developed With ❤️ \n    By Deepanshu and Vishal Manam',

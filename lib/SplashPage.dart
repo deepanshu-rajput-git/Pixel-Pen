@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:pixel_pen/HomeScreen.dart';
 import 'package:pixel_pen/WelcomePage.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -33,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   void navigateToNextScreen() {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => WelcomePage()),
+      MaterialPageRoute(builder: (context) => const WelcomePage()),
     );
   }
 

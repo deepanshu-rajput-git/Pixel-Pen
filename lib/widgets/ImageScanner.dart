@@ -115,7 +115,7 @@ class _ImageScannerState extends State<ImageScanner> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          "Pick Image",
+                          "Pick Image for extraction",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
@@ -170,14 +170,47 @@ class _ImageScannerState extends State<ImageScanner> {
               // const MyProgressIndicator(progress: 0.1),
               outputText != null
                   ? MainButton(
-                      child: const Text(
-                        "Process Me",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: AppColors.titleColor),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        // mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Process Me",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: AppColors.titleColor),
+                          ),
+                          Icon(
+                            Icons.arrow_right,
+                            size: 30,
+                          )
+                        ],
                       ),
                       onPressed: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            dismissDirection: DismissDirection.horizontal,
+                            content: const Text(
+                              'Extracting text from image..',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white, // Customize the text color
+                              ),
+                            ),
+                            backgroundColor: AppColors.mainColor2,
+                            duration: const Duration(seconds: 1),
+                            action: SnackBarAction(
+                              label: 'OK',
+                              onPressed: () {
+                                ScaffoldMessenger.of(context)
+                                    .hideCurrentSnackBar();
+                              },
+                              textColor: Colors.white,
+                            ),
+                          ),
+                        );
                         Navigator.push(
                           context,
                           MaterialPageRoute(
