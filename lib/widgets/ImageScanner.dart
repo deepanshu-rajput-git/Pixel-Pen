@@ -95,8 +95,8 @@ class _ImageScannerState extends State<ImageScanner> {
                         duration: const Duration(seconds: 2),
                         child: Text(
                           selectedFileName != null
-                              ? 'Selected Image :   $selectedFileName'
-                              : "Please pick any image",
+                              ? 'Selected Image :  $selectedFileName'
+                              : "Please pick any image...",
                           style: const TextStyle(fontSize: 16),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
@@ -110,12 +110,25 @@ class _ImageScannerState extends State<ImageScanner> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   MainButton(
-                    child: const Text(
-                      "Pick Image",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: AppColors.titleColor),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "Pick Image",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: AppColors.titleColor),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Icon(
+                          Icons.image_outlined,
+                          size: 27,
+                        )
+                      ],
                     ),
                     onPressed: () {
                       pickImageFile();

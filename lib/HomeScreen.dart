@@ -25,56 +25,66 @@ class HomeScreen extends StatelessWidget {
   final pages = [
     Container(
       color: AppColors.mainColor2,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            Center(
-              child:
-                  Lottie.asset('assets/pdfPage.json', width: 350, height: 450),
-            ),
-            Container(
-              child: Builder(
-                builder: (context) => MainContainer(
-                  color: AppColors.mainColor2,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const PdfScanner(),
-                      ),
-                    );
-                  },
-                  child: const Text(
-                    "Your PDFs, Your Words :\n PixelPen at Your Service...",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: AppColors.titleColor,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Center(
+            child: Lottie.asset('assets/pdfPage.json', width: 350, height: 450),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            child: Builder(
+              builder: (context) => MainContainer(
+                color: AppColors.mainColor2,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PdfScanner(),
                     ),
+                  );
+                },
+                child: const Text(
+                  "Your PDFs, Your Words :\n PixelPen at Your Service...",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: AppColors.titleColor,
                   ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const Text(
+            "Swipe...",
+            style: TextStyle(
+                fontFamily: 'Cera Pro',
+                color: AppColors.titleColor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(
+            height: 10,
+          )
+        ],
       ),
     ),
     Container(
       color: AppColors.mainColor4,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          const SizedBox(
-            height: 20,
-          ),
           Center(
             child:
                 Lottie.asset('assets/lastPage.json', width: 400, height: 350),
+          ),
+          SizedBox(
+            height: 20,
           ),
           Container(
             child: Builder(
@@ -99,20 +109,34 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(
+            height: 20,
+          ),
+          const Text(
+            "Swipe...",
+            style: TextStyle(
+                fontFamily: 'Cera Pro',
+                color: AppColors.titleColor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
         ],
       ),
     ),
     Container(
       color: AppColors.mainColor,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          const SizedBox(
-            height: 20,
-          ),
           Center(
             child:
                 Lottie.asset('assets/imagePage.json', width: 300, height: 250),
+          ),
+          SizedBox(
+            height: 110,
           ),
           Container(
             // color: Color.fromARGB(255, 210, 242, 68),
@@ -138,6 +162,20 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(
+            height: 20,
+          ),
+          const Text(
+            "Swipe...",
+            style: TextStyle(
+                fontFamily: 'Cera Pro',
+                color: AppColors.titleColor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(
+            height: 10,
+          )
         ],
       ),
     ),
@@ -151,10 +189,10 @@ class HomeScreen extends StatelessWidget {
                 Lottie.asset('assets/developer.json', width: 350, height: 300),
           ),
           const SizedBox(
-            height: 200,
+            height: 202,
           ),
           const Text(
-            'Developed With ❤️ \n      By Deepanshu Rajput',
+            'Developed With ❤️ \n    By Deepanshu and Vishal Manam',
             style: TextStyle(
               fontFamily: 'Cera Pro',
               color: AppColors.titleColor,
@@ -162,6 +200,7 @@ class HomeScreen extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
+          SizedBox(height: 5),
         ],
       ),
     ),
