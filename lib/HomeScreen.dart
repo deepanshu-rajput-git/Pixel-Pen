@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
           Center(
             child: Lottie.asset('assets/pdfPage.json', width: 350, height: 450),
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           Container(
@@ -135,7 +135,7 @@ class HomeScreen extends StatelessWidget {
             child:
                 Lottie.asset('assets/imagePage.json', width: 300, height: 250),
           ),
-          SizedBox(
+          const SizedBox(
             height: 160,
           ),
           Container(
@@ -200,7 +200,7 @@ class HomeScreen extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
         ],
       ),
     ),

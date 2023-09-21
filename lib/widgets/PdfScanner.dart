@@ -114,7 +114,7 @@ class _PdfScannerState extends State<PdfScanner> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               MainButton(
